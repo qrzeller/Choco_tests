@@ -1,4 +1,4 @@
-package com.chocoTest.app.model;
+package com.chocoTest.app.model.Solver;
 import org.chocosolver.solver.Solver;
 
 import org.chocosolver.solver.Model;
@@ -10,19 +10,28 @@ import java.util.Arrays;
 
 /**
  * Created by qtask on 23.04.2017.
+ *
+ * http://choco-solver.readthedocs.io/en/latest/2_modelling.html
+ * https://media.readthedocs.org/pdf/choco-solver/latest/choco-solver.pdf
+ *
+ *
  */
 public class VariableAndConstraint {
     private Model model;
     private ArrayList<IntVar> vars;
     private IntVar universe;
+
     public VariableAndConstraint(int universe){
         model = new Model("A day constraint of " + universe +"slot");
-        vars = new ArrayList<IntVar>(24);
-        //this.universe = model.setVar("universe", 1 , 24);
+        vars = new ArrayList<IntVar>(24);// At least one day.
+    }
+
+    public void setDomain(){
 
     }
 
-    public void addTask(String taskName, int from, int to, int duration) {
+
+    public void addTaskHour(String taskName, int from, int to, int duration) {
         for(int i = 0; i < duration ; i++){
             IntVar var = model.intVar(taskName+"_"+i, from, to);
             vars.add(var);
@@ -55,5 +64,15 @@ public class VariableAndConstraint {
         }
 
         return status + result;
+    }
+
+    /* Allowing all constraint not to be satisfied-->
+    See Reify
+     */
+    public void reifyingAll(){
+        //TODO
+    }
+    public void reifyingSome(int[] vars){
+        //TODO
     }
 }
