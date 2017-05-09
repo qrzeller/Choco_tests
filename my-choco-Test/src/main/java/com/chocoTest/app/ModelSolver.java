@@ -6,7 +6,7 @@ import com.chocoTest.app.model.Solver.VariableAndConstraint;
  * Hello world!
  *
  */
-public class App 
+public class ModelSolver
 {
     public static void main( String[] args )
     {
