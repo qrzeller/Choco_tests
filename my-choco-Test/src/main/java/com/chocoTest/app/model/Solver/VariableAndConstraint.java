@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by qtask on 23.04.2017.
+ * Created by Quentin Zeller on 23.04.2017.
  *
  * http://choco-solver.readthedocs.io/en/latest/2_modelling.html
  * https://media.readthedocs.org/pdf/choco-solver/latest/choco-solver.pdf

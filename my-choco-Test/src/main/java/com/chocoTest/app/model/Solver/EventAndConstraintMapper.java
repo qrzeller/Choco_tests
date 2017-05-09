@@ -1,7 +1,7 @@
 package com.chocoTest.app.model.Solver;
 
 /**
- * Created by qtask on 09.05.2017.
+ * Created by Quentin Zeller on 09.05.2017.
  *
  * Map calendar schedule constraint and task constraint to simplified integer based on the sensibility
  */

@@ -1,7 +1,7 @@
 package com.chocoTest.app.model.Solver;
 
 /**
- * Created by qtask on 09.05.2017.
+ * Created by Quentin Zeller on 09.05.2017.
  *
  * Take care of transforming calendar event to tasks usable by the solver
  *
