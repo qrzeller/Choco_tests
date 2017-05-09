@@ -12,7 +12,7 @@ public class Tools {
      * @param minuts
      * @return
      */
-    public int getFractionOfHour(int minuts){
+    public static int getFractionOfHour(int minuts){
         switch (minuts){
             case 60 :
                 return 1;

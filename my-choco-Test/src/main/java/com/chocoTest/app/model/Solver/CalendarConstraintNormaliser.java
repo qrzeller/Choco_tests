@@ -14,10 +14,10 @@ public class CalendarConstraintNormaliser {
      * Transform the start and stop date with the precision of the sensibility.
      * @return return the task we pass in parameter.
      */
-    public Task normalizeTask(Task t){
+   /* public Task normalizeTask(Task t){
         t.startDateTime();
         t.endDateTime();
         t.deadline();
         //TODO
-    }
+    }*/
 }

@@ -26,10 +26,15 @@ public class VariableAndConstraint {
 
     private int upperBound = Integer.MAX_VALUE;
     private int lowerBound = 0;
+    private int sensibilityFraction = 0;
+
+    private EventAndConstraintMapper mapper= new EventAndConstraintMapper();
 
     public VariableAndConstraint(int universe){
         model = new Model("A day constraint of " + universe +"slot");
-        vars = new ArrayList<IntVar>(24);// At least one day.
+        vars = new ArrayList<IntVar>(24*Tools.getFractionOfHour(mapper.getSensibility()));// At least one day.
+        sensibilityFraction = Tools.getFractionOfHour(mapper.getSensibility());
+        System.out.println("The sensibility is : " + Tools.getFractionOfHour(mapper.getSensibility()));
     }
 
 
@@ -52,6 +57,8 @@ public class VariableAndConstraint {
      * @param duration The duration of the task in increment of sensibility.
      */
     public void addTask(String taskName, int from, int to, int duration) {
+        //Transform hours to atomic value. atom is the size of sensibility.
+        from*=sensibilityFraction; to*=sensibilityFraction; duration*=sensibilityFraction;
         for(int i = 0; i < duration ; i++){
             IntVar var = model.intVar(taskName+"_"+i, from, to);
             vars.add(var);

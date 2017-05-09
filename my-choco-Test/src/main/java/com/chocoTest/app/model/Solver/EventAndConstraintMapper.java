@@ -29,5 +29,9 @@ public class EventAndConstraintMapper {
         this.sensibility = sensibility;
     }
 
+    public int getSensibility(){
+        return sensibility;
+    }
+
 
 }
