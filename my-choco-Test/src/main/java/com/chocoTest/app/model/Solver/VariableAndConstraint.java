@@ -14,6 +14,9 @@ import java.util.Arrays;
  * http://choco-solver.readthedocs.io/en/latest/2_modelling.html
  * https://media.readthedocs.org/pdf/choco-solver/latest/choco-solver.pdf
  *
+ * The @class VariableAncConstrain set all the value/task in the solver cutting them into sub-task with their respective
+ * constraint
+ *
  *
  */
 public class VariableAndConstraint {
@@ -21,17 +24,34 @@ public class VariableAndConstraint {
     private ArrayList<IntVar> vars;
     private IntVar universe;
 
+    private int upperBound = Integer.MAX_VALUE;
+    private int lowerBound = 0;
+
     public VariableAndConstraint(int universe){
         model = new Model("A day constraint of " + universe +"slot");
         vars = new ArrayList<IntVar>(24);// At least one day.
     }
 
-    public void setDomain(){
 
+    /**
+     * Set the lower and upperbound of the task variable we get.
+     * @param from Usually the current day and hour
+     * @param to The max time value we want to compute.
+     */
+    public void setDomain(int from, int to){
+        lowerBound = from;
+        upperBound = to;
     }
 
 
-    public void addTaskHour(String taskName, int from, int to, int duration) {
+    /**
+     * Add task where the duration is one hour
+     * @param taskName the name of the task
+     * @param from When we can start the task
+     * @param to When we must finish the task
+     * @param duration The duration of the task in increment of sensibility.
+     */
+    public void addTask(String taskName, int from, int to, int duration) {
         for(int i = 0; i < duration ; i++){
             IntVar var = model.intVar(taskName+"_"+i, from, to);
             vars.add(var);
@@ -66,12 +86,18 @@ public class VariableAndConstraint {
         return status + result;
     }
 
-    /* Allowing all constraint not to be satisfied-->
-    See Reify
+
+    /**
+     * Say that not all constraint need to be satisfiable
      */
     public void reifyingAll(){
         //TODO
     }
+
+    /**
+     * Some constraint does not need to be satisfied
+     * @param vars The constraint that does not need to be satisfied.
+     */
     public void reifyingSome(int[] vars){
         //TODO
     }

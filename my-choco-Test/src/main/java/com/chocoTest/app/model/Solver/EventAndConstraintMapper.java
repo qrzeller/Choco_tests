@@ -28,4 +28,6 @@ public class EventAndConstraintMapper {
     public void setSensibility(int sensibility){
         this.sensibility = sensibility;
     }
+
+
 }
